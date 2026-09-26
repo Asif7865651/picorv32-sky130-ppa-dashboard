@@ -44,24 +44,33 @@ th{background:#1a1f2b;color:#4ec9b0}
 </style></head><body>
 <h1>picorv32a &mdash; RTL-to-GDS Results</h1>
 <p class="subtitle">RISC-V core, full synthesis-to-GDSII flow on OpenLane / Sky130, multi-clock PPA characterization.</p>
-<div class="badge">Static snapshot &middot; generated 2026-09-24 08:43 &middot; not live</div>
+<div class="badge">Static snapshot &middot; generated 2026-09-26 17:03 &middot; not live</div>
 
 <h2>Multi-Run PPA Comparison</h2>
 <table>
         <tr><th>Clock Target</th><th>Status</th><th>Runtime</th><th>Utilization</th>
-        <th>WNS</th><th>Actual Critical Path</th><th>Routing Viol.</th><th>DRC Viol.</th></tr>
+        <th>WNS</th><th>Actual Critical Path</th><th>Routing Viol.</th><th>DRC Viol.</th>
+        <th>Pin Antenna Viol.</th><th>Net Antenna Viol.</th></tr>
         <tr>
             <td>25ns (baseline)</td><td>FLOW COMPLETED</td><td>0h27m30s0ms</td><td>46.18%</td>
             <td style="color:#4ec9b0">0 ns</td><td>1.5 ns</td>
             <td>0</td><td>0</td>
+            <td style="color:#ff6b6b">52</td><td>38</td>
         </tr><tr>
             <td>20ns</td><td>FLOW COMPLETED</td><td>0h27m55s0ms</td><td>46.18%</td>
             <td style="color:#4ec9b0">0 ns</td><td>6 ns</td>
             <td>0</td><td>0</td>
+            <td style="color:#ff6b6b">54</td><td>41</td>
         </tr><tr>
             <td>15ns</td><td>FLOW COMPLETED</td><td>0h28m9s0ms</td><td>46.18%</td>
             <td style="color:#4ec9b0">0 ns</td><td>5.77 ns</td>
             <td>0</td><td>0</td>
+            <td style="color:#ff6b6b">53</td><td>38</td>
+        </tr><tr>
+            <td>25ns + antenna fix</td><td>FLOW COMPLETED</td><td>0h32m1s0ms</td><td>46.18%</td>
+            <td style="color:#4ec9b0">0 ns</td><td>1.56 ns</td>
+            <td>0</td><td>0</td>
+            <td style="color:#ff6b6b">2</td><td>2</td>
         </tr>
     </table>
 
@@ -77,7 +86,7 @@ th{background:#1a1f2b;color:#4ec9b0}
             <p class="hint">A small region near the die center, zoomed in enough that individual standard-cell rows and metal routing tracks are actually distinguishable, in Sky130's real layer color scheme.</p>
         </div></div>
 
-<div class="tabs"><button class="tab-btn active" onclick="showRun('first_run', this)">25ns (baseline)</button><button class="tab-btn" onclick="showRun('run_20ns', this)">20ns</button><button class="tab-btn" onclick="showRun('run_15ns', this)">15ns</button></div>
+<div class="tabs"><button class="tab-btn active" onclick="showRun('first_run', this)">25ns (baseline)</button><button class="tab-btn" onclick="showRun('run_20ns', this)">20ns</button><button class="tab-btn" onclick="showRun('run_15ns', this)">15ns</button><button class="tab-btn" onclick="showRun('antenna_fix', this)">25ns + antenna fix</button></div>
 <div id="panel-first_run" class="run-panel" style="display:block">
         <h2>Signoff Summary</h2>
         <div class="cards"><div class="card"><div class="card-label">Flow Status</div><div class="card-value" style="color:#ffd400">FLOW COMPLETED</div></div><div class="card"><div class="card-label">Total Runtime</div><div class="card-value" style="color:#e8e8e8">0h27m30s0ms</div></div><div class="card"><div class="card-label">Routing Runtime</div><div class="card-value" style="color:#e8e8e8">0h23m8s0ms</div></div><div class="card"><div class="card-label">Die Area (mm&sup2;)</div><div class="card-value" style="color:#e8e8e8">0.254189</div></div><div class="card"><div class="card-label">Final Utilization</div><div class="card-value" style="color:#e8e8e8">46.18%</div></div><div class="card"><div class="card-label">Worst Neg. Slack</div><div class="card-value" style="color:#4ec9b0">0 ns</div></div><div class="card"><div class="card-label">Critical Path</div><div class="card-value" style="color:#e8e8e8">1.5 ns</div></div><div class="card"><div class="card-label">Clock Target</div><div class="card-value" style="color:#e8e8e8">25 ns</div></div></div>
@@ -4251,6 +4260,1349 @@ Fatal error:could not find subcircuit: XFILLER_0_27_93(sky130_ef_sc_hd__decap_12
   trace_data[9]
   trace_valid
 </pre>
+    </div><div id="panel-antenna_fix" class="run-panel" style="display:none">
+        <h2>Signoff Summary</h2>
+        <div class="cards"><div class="card"><div class="card-label">Flow Status</div><div class="card-value" style="color:#ffd400">FLOW COMPLETED</div></div><div class="card"><div class="card-label">Total Runtime</div><div class="card-value" style="color:#e8e8e8">0h32m1s0ms</div></div><div class="card"><div class="card-label">Routing Runtime</div><div class="card-value" style="color:#e8e8e8">0h27m25s0ms</div></div><div class="card"><div class="card-label">Die Area (mm&sup2;)</div><div class="card-value" style="color:#e8e8e8">0.254189</div></div><div class="card"><div class="card-label">Final Utilization</div><div class="card-value" style="color:#e8e8e8">46.18%</div></div><div class="card"><div class="card-label">Worst Neg. Slack</div><div class="card-value" style="color:#4ec9b0">0 ns</div></div><div class="card"><div class="card-label">Critical Path</div><div class="card-value" style="color:#e8e8e8">1.56 ns</div></div><div class="card"><div class="card-label">Clock Target</div><div class="card-value" style="color:#e8e8e8">25 ns</div></div></div>
+        <h2>DRC / LVS / Antenna Checks</h2>
+        <div class="cards"><div class="card"><div class="card-label">Routing Violations</div><div class="card-value" style="color:#4ec9b0">0</div></div><div class="card"><div class="card-label">Magic DRC Violations</div><div class="card-value" style="color:#4ec9b0">0</div></div><div class="card"><div class="card-label">KLayout XOR Diffs</div><div class="card-value" style="color:#9aa0ac">N/A</div></div><div class="card"><div class="card-label">LVS Errors</div><div class="card-value" style="color:#4ec9b0">0</div></div><div class="card"><div class="card-label">Pin Antenna Viol.</div><div class="card-value" style="color:#ff6b6b">2</div></div><div class="card"><div class="card-label">Net Antenna Viol.</div><div class="card-value" style="color:#ff6b6b">2</div></div></div>
+        <h2>Power Breakdown</h2>
+        <table>
+        <tr><th>Corner</th><th>Internal</th><th>Switching</th><th>Leakage</th><th>Total (est.)</th></tr>
+        <tr><td>Fastest (best-case)</td><td>N/A</td><td>N/A</td><td>N/A</td><td><b>N/A</b></td></tr><tr><td>Typical</td><td>0.00794 uW</td><td>0.00847 uW</td><td>7.77e-08 uW</td><td><b>0.01641 uW</b></td></tr><tr><td>Slowest (worst-case)</td><td>N/A</td><td>N/A</td><td>N/A</td><td><b>N/A</b></td></tr>
+    </table>
+        <h2>Routing Distribution by Metal Layer</h2>
+        <div class="bars"><div class="bar-row"><span class="bar-label">Layer 1</span>
+    <div class="bar-track"><div class="bar-fill" style="width:0.0%"></div></div>
+    <span class="bar-pct">0.0%</span></div><div class="bar-row"><span class="bar-label">Layer 2</span>
+    <div class="bar-track"><div class="bar-fill" style="width:61.41%"></div></div>
+    <span class="bar-pct">61.4%</span></div><div class="bar-row"><span class="bar-label">Layer 3</span>
+    <div class="bar-track"><div class="bar-fill" style="width:59.72%"></div></div>
+    <span class="bar-pct">59.7%</span></div><div class="bar-row"><span class="bar-label">Layer 4</span>
+    <div class="bar-track"><div class="bar-fill" style="width:45.65%"></div></div>
+    <span class="bar-pct">45.6%</span></div><div class="bar-row"><span class="bar-label">Layer 5</span>
+    <div class="bar-track"><div class="bar-fill" style="width:44.43%"></div></div>
+    <span class="bar-pct">44.4%</span></div><div class="bar-row"><span class="bar-label">Layer 6</span>
+    <div class="bar-track"><div class="bar-fill" style="width:27.1%"></div></div>
+    <span class="bar-pct">27.1%</span></div></div>
+        <div class="two-col">
+          <div><h2>Synthesized Logic Cell Breakdown</h2>
+            <table><tr><th>Cell Type</th><th>Count</th></tr><tr><td>AND</td><td>405</td></tr><tr><td>DFF</td><td>91</td></tr><tr><td>NAND</td><td>226</td></tr><tr><td>NOR</td><td>171</td></tr><tr><td>OR</td><td>1045</td></tr><tr><td>XOR</td><td>388</td></tr><tr><td>XNOR</td><td>113</td></tr><tr><td>MUX</td><td>2709</td></tr></table></div>
+          <div><h2>Physical-Only Cells</h2>
+            <table><tr><th>Cell Type</th><th>Count</th></tr><tr><td>DecapCells</td><td>8706</td></tr><tr><td>WelltapCells</td><td>3348</td></tr><tr><td>DiodeCells</td><td>5469</td></tr><tr><td>FillCells</td><td>8904</td></tr></table></div>
+        </div>
+        <h2>Step-by-Step Results by Phase</h2>
+        <div class="stage-container"><details class="stage-block">
+            <summary>Synthesis &nbsp;<span class="step-count">(2 steps)</span></summary>
+            <div class="step-list"><details class="step-item">
+                <summary>Step 1 &mdash; synthesis</summary>
+                <pre class="log-box-sm">     sky130_fd_sc_hd__o22ai_2        1
+     sky130_fd_sc_hd__o2bb2a_2       3
+     sky130_fd_sc_hd__o311a_2       33
+     sky130_fd_sc_hd__o31a_2        17
+     sky130_fd_sc_hd__o31ai_2        2
+     sky130_fd_sc_hd__o32a_2         2
+     sky130_fd_sc_hd__o41a_2         1
+     sky130_fd_sc_hd__or2_2        299
+     sky130_fd_sc_hd__or2b_2        22
+     sky130_fd_sc_hd__or3_2        107
+     sky130_fd_sc_hd__or3b_2        16
+     sky130_fd_sc_hd__or4_2         28
+     sky130_fd_sc_hd__or4b_2        10
+     sky130_fd_sc_hd__xnor2_2       79
+     sky130_fd_sc_hd__xor2_2        40
+
+   Chip area for module '\picorv32': 107077.696000
+
+62. Executing Verilog backend.
+Dumping module `\picorv32'.
+
+Warnings: 307 unique messages, 307 total
+End of script. Logfile hash: 7d02f332e8, CPU: user 11.81s system 0.21s, MEM: 63.52 MB peak
+Yosys 0.30+48 (git sha1 14d50a176d5, gcc 8.3.1 -fPIC -Os)
+Time spent: 65% 2x abc (21 sec), 10% 41x opt_expr (3 sec), ...
+</pre>
+            </details><details class="step-item">
+                <summary>Step 2 &mdash; sta</summary>
+                <pre class="log-box-sm">skew_report_end
+summary_report
+
+===========================================================================
+report_tns
+============================================================================
+tns 0.00
+
+===========================================================================
+report_wns
+============================================================================
+wns 0.00
+
+===========================================================================
+report_worst_slack -max (Setup)
+============================================================================
+worst slack 14.17
+
+===========================================================================
+report_worst_slack -min (Hold)
+============================================================================
+worst slack 0.16
+summary_report_end
+[WARNING] Did not save OpenROAD database!
+Writing SDF to '/openlane/designs/picorv32a/runs/antenna_fix/results/synthesis/picorv32.sdf'…
+</pre>
+            </details></div>
+        </details><details class="stage-block">
+            <summary>Floorplan &nbsp;<span class="step-count">(4 steps)</span></summary>
+            <div class="step-list"><details class="step-item">
+                <summary>Step 3 &mdash; initial_fp</summary>
+                <pre class="log-box-sm">Using 1e-03 for current...
+Using 1e-09 for power...
+Using 1e-06 for distance...
+[INFO ODB-0222] Reading LEF file: /openlane/designs/picorv32a/runs/antenna_fix/tmp/merged.nom.lef
+[INFO ODB-0223]     Created 14 technology layers
+[INFO ODB-0224]     Created 25 technology vias
+[INFO ODB-0225]     Created 441 library cells
+[INFO ODB-0226] Finished LEF file:  /openlane/designs/picorv32a/runs/antenna_fix/tmp/merged.nom.lef
+Reading netlist '/openlane/designs/picorv32a/runs/antenna_fix/results/synthesis/picorv32.v'…
+Reading design constraints file at '/openlane/scripts/base.sdc'…
+[INFO]: Setting output delay to: 5.0
+[INFO]: Setting input delay to: 5.0
+[INFO]: Setting load to: 0.033442
+[INFO]: Setting clock uncertainty to: 0.25
+[INFO]: Setting clock transition to: 0.15
+[INFO]: Setting timing derate to: 5.0 %
+[INFO IFP-0001] Added 179 rows of 1060 site unithd with height 1.
+[INFO IFP-0030] Inserted 0 tiecells using sky130_fd_sc_hd__conb_1/LO.
+[INFO IFP-0030] Inserted 0 tiecells using sky130_fd_sc_hd__conb_1/HI.
+[INFO] Extracting DIE_AREA and CORE_AREA from the floorplan
+[INFO] Floorplanned on a die area of 0.0 0.0 498.84 509.56 (microns). Saving to /openlane/designs/picorv32a/runs/antenna_fix/reports/floorplan/3-initial_fp_die_area.rpt.
+[INFO] Floorplanned on a core area of 5.52 10.88 493.12 497.76 (microns). Saving to /openlane/designs/picorv32a/runs/antenna_fix/reports/floorplan/3-initial_fp_core_area.rpt.
+Writing OpenROAD database to '/openlane/designs/picorv32a/runs/antenna_fix/tmp/floorplan/3-initial_fp.odb'…
+Writing layout to '/openlane/designs/picorv32a/runs/antenna_fix/tmp/floorplan/3-initial_fp.def'…
+Writing timing constraints to '/openlane/designs/picorv32a/runs/antenna_fix/tmp/floorplan/3-initial_fp.sdc'…
+</pre>
+            </details><details class="step-item">
+                <summary>Step 4 &mdash; io</summary>
+                <pre class="log-box-sm">OpenROAD 41a51eaf4ca2171c92ff38afb91eb37bbd3f36da 
+This program is licensed under the BSD-3 license. See the LICENSE file for details.
+Components of this program may be licensed under more restrictive licenses which must be honored.
+[INFO]: Reading ODB at '/openlane/designs/picorv32a/runs/antenna_fix/tmp/floorplan/3-initial_fp.odb'…
+define_corners Typical
+read_liberty -corner Typical /home/asifr/.ciel/sky130A/libs.ref/sky130_fd_sc_hd/lib/sky130_fd_sc_hd__tt_025C_1v80.lib
+Using 1e-12 for capacitance...
+Using 1e+03 for resistance...
+Using 1e-09 for time...
+Using 1e+00 for voltage...
+Using 1e-03 for current...
+Using 1e-09 for power...
+Using 1e-06 for distance...
+Reading design constraints file at '/openlane/designs/picorv32a/runs/antenna_fix/tmp/floorplan/3-initial_fp.sdc'…
+Found 0 macro blocks.
+Using 1u default distance from corners.
+[INFO PPL-0007] Random pin placement.
+Writing OpenROAD database to '/openlane/designs/picorv32a/runs/antenna_fix/tmp/floorplan/4-io.odb'…
+Writing layout to '/openlane/designs/picorv32a/runs/antenna_fix/tmp/floorplan/4-io.def'…
+</pre>
+            </details><details class="step-item">
+                <summary>Step 5 &mdash; tap</summary>
+                <pre class="log-box-sm">OpenROAD 41a51eaf4ca2171c92ff38afb91eb37bbd3f36da 
+This program is licensed under the BSD-3 license. See the LICENSE file for details.
+Components of this program may be licensed under more restrictive licenses which must be honored.
+[INFO]: Reading ODB at '/openlane/designs/picorv32a/runs/antenna_fix/tmp/floorplan/4-io.odb'…
+define_corners Typical
+read_liberty -corner Typical /home/asifr/.ciel/sky130A/libs.ref/sky130_fd_sc_hd/lib/sky130_fd_sc_hd__tt_025C_1v80.lib
+Using 1e-12 for capacitance...
+Using 1e+03 for resistance...
+Using 1e-09 for time...
+Using 1e+00 for voltage...
+Using 1e-03 for current...
+Using 1e-09 for power...
+Using 1e-06 for distance...
+Reading design constraints file at '/openlane/designs/picorv32a/runs/antenna_fix/tmp/floorplan/3-initial_fp.sdc'…
+[INFO TAP-0004] Inserted 358 endcaps.
+[INFO TAP-0005] Inserted 3348 tapcells.
+Writing OpenROAD database to '/openlane/designs/picorv32a/runs/antenna_fix/tmp/floorplan/5-tapcell.odb'…
+Writing layout to '/openlane/designs/picorv32a/runs/antenna_fix/tmp/floorplan/5-tapcell.def'…
+</pre>
+            </details><details class="step-item">
+                <summary>Step 6 &mdash; pdn</summary>
+                <pre class="log-box-sm">[WARNING PSM-0018] Y direction bump pitch is not specified, defaulting to 140um.
+[WARNING PSM-0019] Voltage on net VPWR is not explicitly set.
+[WARNING PSM-0022] Using voltage 1.800V for VDD network.
+[WARNING PSM-0065] VSRC location not specified, using default checkerboard pattern with one VDD every size bumps in x-direction and one in two bumps in the y-direction
+[INFO PSM-0076] Setting metal node density to be standard cell height times 5.
+[WARNING PSM-0030] VSRC location at (109.320um, 114.320um) and size 10.000um, is not located on an existing power stripe node. Moving to closest node at (175.440um, 180.710um).
+[WARNING PSM-0030] VSRC location at (389.320um, 254.320um) and size 10.000um, is not located on an existing power stripe node. Moving to closest node at (329.040um, 180.710um).
+[INFO PSM-0031] Number of PDN nodes on net VPWR = 6168.
+[INFO PSM-0064] Number of voltage sources = 2.
+[INFO PSM-0040] All PDN stripes on net VPWR are connected.
+[WARNING PSM-0016] Voltage pad location (VSRC) file not specified, defaulting pad location to checkerboard pattern on core area.
+[WARNING PSM-0017] X direction bump pitch is not specified, defaulting to 140um.
+[WARNING PSM-0018] Y direction bump pitch is not specified, defaulting to 140um.
+[WARNING PSM-0019] Voltage on net VGND is not explicitly set.
+[WARNING PSM-0021] Using voltage 0.000V for ground network.
+[WARNING PSM-0065] VSRC location not specified, using default checkerboard pattern with one VDD every size bumps in x-direction and one in two bumps in the y-direction
+[INFO PSM-0076] Setting metal node density to be standard cell height times 5.
+[WARNING PSM-0030] VSRC location at (109.320um, 114.320um) and size 10.000um, is not located on an existing power stripe node. Moving to closest node at (178.740um, 184.010um).
+[WARNING PSM-0030] VSRC location at (389.320um, 254.320um) and size 10.000um, is not located on an existing power stripe node. Moving to closest node at (332.340um, 184.010um).
+[INFO PSM-0031] Number of PDN nodes on net VGND = 6168.
+[INFO PSM-0064] Number of voltage sources = 2.
+[INFO PSM-0040] All PDN stripes on net VGND are connected.
+Setting global connections for newly added cells…
+Writing OpenROAD database to '/openlane/designs/picorv32a/runs/antenna_fix/results/floorplan/picorv32.odb'…
+Writing layout to '/openlane/designs/picorv32a/runs/antenna_fix/results/floorplan/picorv32.def'…
+</pre>
+            </details></div>
+        </details><details class="stage-block">
+            <summary>Placement &nbsp;<span class="step-count">(5 steps)</span></summary>
+            <div class="step-list"><details class="step-item">
+                <summary>Step 7 &mdash; global</summary>
+                <pre class="log-box-sm">[INFO GPL-0063] TotalRouteOverflowH2: 18.99999964237213
+[INFO GPL-0064] TotalRouteOverflowV2: 12.200002431869507
+[INFO GPL-0065] OverflowTileCnt2: 277
+[INFO GPL-0066] 0.5%RC: 1.168750022848447
+[INFO GPL-0067] 1.0%RC: 1.1225694509016142
+[INFO GPL-0068] 2.0%RC: 1.0662020893462443
+[INFO GPL-0069] 5.0%RC: 1.0264623950450866
+[INFO GPL-0070] 0.5rcK: 1.0
+[INFO GPL-0071] 1.0rcK: 1.0
+[INFO GPL-0072] 2.0rcK: 0.0
+[INFO GPL-0073] 5.0rcK: 0.0
+[INFO GPL-0074] FinalRC: 1.1456597
+[NesterovSolve] Iter: 380 overflow: 0.186546 HPWL: 516542912
+[NesterovSolve] Iter: 390 overflow: 0.163033 HPWL: 516994569
+[INFO GPL-0100] worst slack 1.4e-08
+[INFO GPL-0103] Weighted 1118 nets.
+[NesterovSolve] Iter: 400 overflow: 0.14008 HPWL: 517467384
+[NesterovSolve] Iter: 410 overflow: 0.119682 HPWL: 517899724
+[NesterovSolve] Iter: 420 overflow: 0.100733 HPWL: 518475595
+[NesterovSolve] Finished with Overflow: 0.098940
+Setting global connections for newly added cells…
+Writing OpenROAD database to '/openlane/designs/picorv32a/runs/antenna_fix/tmp/placement/7-global.odb'…
+Writing netlist to '/openlane/designs/picorv32a/runs/antenna_fix/tmp/placement/7-global.nl.v'…
+Writing powered netlist to '/openlane/designs/picorv32a/runs/antenna_fix/tmp/placement/7-global.pnl.v'…
+Writing layout to '/openlane/designs/picorv32a/runs/antenna_fix/tmp/placement/7-global.def'…
+</pre>
+            </details><details class="step-item">
+                <summary>Step 8 &mdash; gpl_sta</summary>
+                <pre class="log-box-sm">
+===========================================================================
+report_wns
+============================================================================
+wns 0.00
+
+===========================================================================
+report_worst_slack -max (Setup)
+============================================================================
+worst slack 13.70
+
+===========================================================================
+report_worst_slack -min (Hold)
+============================================================================
+worst slack 0.18
+summary_report_end
+area_report
+
+===========================================================================
+report_design_area
+============================================================================
+Design area 111267 u^2 47% utilization.
+area_report_end
+[WARNING] Did not save OpenROAD database!
+Writing SDF to '/openlane/designs/picorv32a/runs/antenna_fix/results/signoff/picorv32.sdf'…
+</pre>
+            </details><details class="step-item">
+                <summary>Step 9 &mdash; resizer</summary>
+                <pre class="log-box-sm">---------------------------------
+total displacement      26219.4 u
+average displacement        1.7 u
+max displacement           10.1 u
+original HPWL          522385.9 u
+legalized HPWL         542436.3 u
+delta HPWL                    4 %
+
+[INFO DPL-0020] Mirrored 4510 instances
+[INFO DPL-0021] HPWL before          542436.3 u
+[INFO DPL-0022] HPWL after           533629.8 u
+[INFO DPL-0023] HPWL delta               -1.6 %
+Setting global connections for newly added cells…
+Writing OpenROAD database to '/openlane/designs/picorv32a/runs/antenna_fix/tmp/placement/9-resizer.odb'…
+Writing netlist to '/openlane/designs/picorv32a/runs/antenna_fix/tmp/placement/9-resizer.nl.v'…
+Writing powered netlist to '/openlane/designs/picorv32a/runs/antenna_fix/tmp/placement/9-resizer.pnl.v'…
+Writing layout to '/openlane/designs/picorv32a/runs/antenna_fix/tmp/placement/9-resizer.def'…
+Writing timing constraints to '/openlane/designs/picorv32a/runs/antenna_fix/tmp/placement/9-resizer.sdc'…
+area_report
+
+===========================================================================
+report_design_area
+============================================================================
+Design area 112041 u^2 47% utilization.
+area_report_end
+</pre>
+            </details><details class="step-item">
+                <summary>Step 10 &mdash; detailed</summary>
+                <pre class="log-box-sm">Using 1e+03 for resistance...
+Using 1e-09 for time...
+Using 1e+00 for voltage...
+Using 1e-03 for current...
+Using 1e-09 for power...
+Using 1e-06 for distance...
+Reading design constraints file at '/openlane/designs/picorv32a/runs/antenna_fix/tmp/placement/9-resizer.sdc'…
+Placement Analysis
+---------------------------------
+total displacement          0.0 u
+average displacement        0.0 u
+max displacement            0.0 u
+original HPWL          533629.8 u
+legalized HPWL         542436.3 u
+delta HPWL                    2 %
+
+[INFO DPL-0020] Mirrored 4510 instances
+[INFO DPL-0021] HPWL before          542436.3 u
+[INFO DPL-0022] HPWL after           533629.8 u
+[INFO DPL-0023] HPWL delta               -1.6 %
+Setting global connections for newly added cells…
+Writing OpenROAD database to '/openlane/designs/picorv32a/runs/antenna_fix/results/placement/picorv32.odb'…
+Writing netlist to '/openlane/designs/picorv32a/runs/antenna_fix/results/placement/picorv32.nl.v'…
+Writing powered netlist to '/openlane/designs/picorv32a/runs/antenna_fix/results/placement/picorv32.pnl.v'…
+Writing layout to '/openlane/designs/picorv32a/runs/antenna_fix/results/placement/picorv32.def'…
+</pre>
+            </details><details class="step-item">
+                <summary>Step 11 &mdash; dpl_sta</summary>
+                <pre class="log-box-sm">
+===========================================================================
+report_wns
+============================================================================
+wns 0.00
+
+===========================================================================
+report_worst_slack -max (Setup)
+============================================================================
+worst slack 13.72
+
+===========================================================================
+report_worst_slack -min (Hold)
+============================================================================
+worst slack 0.20
+summary_report_end
+area_report
+
+===========================================================================
+report_design_area
+============================================================================
+Design area 112041 u^2 47% utilization.
+area_report_end
+[WARNING] Did not save OpenROAD database!
+Writing SDF to '/openlane/designs/picorv32a/runs/antenna_fix/results/signoff/picorv32.sdf'…
+</pre>
+            </details></div>
+        </details><details class="stage-block">
+            <summary>Clock Tree Synthesis &nbsp;<span class="step-count">(3 steps)</span></summary>
+            <div class="step-list"><details class="step-item">
+                <summary>Step 12 &mdash; cts</summary>
+                <pre class="log-box-sm">Writing timing constraints to '/openlane/designs/picorv32a/runs/antenna_fix/results/cts/picorv32.sdc'…
+[INFO]: Legalizing...
+Placement Analysis
+---------------------------------
+total displacement       2214.8 u
+average displacement        0.1 u
+max displacement            8.7 u
+original HPWL          548595.9 u
+legalized HPWL         559166.1 u
+delta HPWL                    2 %
+
+[INFO DPL-0020] Mirrored 4676 instances
+[INFO DPL-0021] HPWL before          559166.1 u
+[INFO DPL-0022] HPWL after           549755.2 u
+[INFO DPL-0023] HPWL delta               -1.7 %
+Setting global connections for newly added cells…
+Writing OpenROAD database to '/openlane/designs/picorv32a/runs/antenna_fix/results/cts/picorv32.odb'…
+Writing layout to '/openlane/designs/picorv32a/runs/antenna_fix/results/cts/picorv32.def'…
+Writing timing constraints to '/openlane/designs/picorv32a/runs/antenna_fix/results/cts/picorv32.sdc'…
+cts_report
+[INFO CTS-0003] Total number of Clock Roots: 1.
+[INFO CTS-0004] Total number of Buffers Inserted: 222.
+[INFO CTS-0005] Total number of Clock Subnets: 222.
+[INFO CTS-0006] Total number of Sinks: 1597.
+cts_report_end
+</pre>
+            </details><details class="step-item">
+                <summary>Step 13 &mdash; cts_sta</summary>
+                <pre class="log-box-sm">===========================================================================
+report_wns
+============================================================================
+wns 0.00
+
+===========================================================================
+report_worst_slack -max (Setup)
+============================================================================
+worst slack 13.72
+
+===========================================================================
+report_worst_slack -min (Hold)
+============================================================================
+worst slack 0.15
+summary_report_end
+area_report
+
+===========================================================================
+report_design_area
+============================================================================
+Design area 117551 u^2 50% utilization.
+area_report_end
+[WARNING] Did not save OpenROAD database!
+Writing SDF to '/openlane/designs/picorv32a/runs/antenna_fix/results/signoff/picorv32.sdf'…
+Writing timing model to '/openlane/designs/picorv32a/runs/antenna_fix/results/signoff/picorv32.lib'…
+</pre>
+            </details><details class="step-item">
+                <summary>Step 14 &mdash; resizer</summary>
+                <pre class="log-box-sm">---------------------------------
+total displacement       5626.4 u
+average displacement        0.3 u
+max displacement           11.2 u
+original HPWL          554193.9 u
+legalized HPWL         568695.1 u
+delta HPWL                    3 %
+
+[INFO DPL-0020] Mirrored 5541 instances
+[INFO DPL-0021] HPWL before          568695.1 u
+[INFO DPL-0022] HPWL after           557178.8 u
+[INFO DPL-0023] HPWL delta               -2.0 %
+Setting global connections for newly added cells…
+Writing OpenROAD database to '/openlane/designs/picorv32a/runs/antenna_fix/tmp/cts/14-picorv32.resized.odb'…
+Writing netlist to '/openlane/designs/picorv32a/runs/antenna_fix/tmp/cts/14-picorv32.resized.nl.v'…
+Writing powered netlist to '/openlane/designs/picorv32a/runs/antenna_fix/tmp/cts/14-picorv32.resized.pnl.v'…
+Writing layout to '/openlane/designs/picorv32a/runs/antenna_fix/tmp/cts/14-picorv32.resized.def'…
+Writing timing constraints to '/openlane/designs/picorv32a/runs/antenna_fix/tmp/cts/14-picorv32.resized.sdc'…
+area_report
+
+===========================================================================
+report_design_area
+============================================================================
+Design area 127751 u^2 54% utilization.
+area_report_end
+</pre>
+            </details></div>
+        </details><details class="stage-block">
+            <summary>Routing &nbsp;<span class="step-count">(14 steps)</span></summary>
+            <div class="step-list"><details class="step-item">
+                <summary>Step 15 &mdash; resizer_design</summary>
+                <pre class="log-box-sm">---------------------------------
+total displacement       1593.0 u
+average displacement        0.1 u
+max displacement           12.0 u
+original HPWL          557292.0 u
+legalized HPWL         569789.6 u
+delta HPWL                    2 %
+
+[INFO DPL-0020] Mirrored 5560 instances
+[INFO DPL-0021] HPWL before          569789.6 u
+[INFO DPL-0022] HPWL after           558151.7 u
+[INFO DPL-0023] HPWL delta               -2.0 %
+Setting global connections for newly added cells…
+Writing OpenROAD database to '/openlane/designs/picorv32a/runs/antenna_fix/tmp/15-picorv32.odb'…
+Writing netlist to '/openlane/designs/picorv32a/runs/antenna_fix/tmp/15-picorv32.nl.v'…
+Writing powered netlist to '/openlane/designs/picorv32a/runs/antenna_fix/tmp/15-picorv32.pnl.v'…
+Writing layout to '/openlane/designs/picorv32a/runs/antenna_fix/tmp/15-picorv32.def'…
+Writing timing constraints to '/openlane/designs/picorv32a/runs/antenna_fix/tmp/15-picorv32.sdc'…
+area_report
+
+===========================================================================
+report_design_area
+============================================================================
+Design area 129014 u^2 54% utilization.
+area_report_end
+</pre>
+            </details><details class="step-item">
+                <summary>Step 16 &mdash; rsz_design_sta</summary>
+                <pre class="log-box-sm">===========================================================================
+report_wns
+============================================================================
+wns 0.00
+
+===========================================================================
+report_worst_slack -max (Setup)
+============================================================================
+worst slack 14.04
+
+===========================================================================
+report_worst_slack -min (Hold)
+============================================================================
+worst slack 0.20
+summary_report_end
+area_report
+
+===========================================================================
+report_design_area
+============================================================================
+Design area 129014 u^2 54% utilization.
+area_report_end
+[WARNING] Did not save OpenROAD database!
+Writing SDF to '/openlane/designs/picorv32a/runs/antenna_fix/results/signoff/picorv32.sdf'…
+Writing timing model to '/openlane/designs/picorv32a/runs/antenna_fix/results/signoff/picorv32.lib'…
+</pre>
+            </details><details class="step-item">
+                <summary>Step 17 &mdash; resizer_timing</summary>
+                <pre class="log-box-sm">---------------------------------
+total displacement          0.0 u
+average displacement        0.0 u
+max displacement            0.0 u
+original HPWL          558151.7 u
+legalized HPWL         569789.6 u
+delta HPWL                    2 %
+
+[INFO DPL-0020] Mirrored 5560 instances
+[INFO DPL-0021] HPWL before          569789.6 u
+[INFO DPL-0022] HPWL after           558151.7 u
+[INFO DPL-0023] HPWL delta               -2.0 %
+Setting global connections for newly added cells…
+Writing OpenROAD database to '/openlane/designs/picorv32a/runs/antenna_fix/tmp/17-picorv32.odb'…
+Writing netlist to '/openlane/designs/picorv32a/runs/antenna_fix/tmp/17-picorv32.nl.v'…
+Writing powered netlist to '/openlane/designs/picorv32a/runs/antenna_fix/tmp/17-picorv32.pnl.v'…
+Writing layout to '/openlane/designs/picorv32a/runs/antenna_fix/tmp/17-picorv32.def'…
+Writing timing constraints to '/openlane/designs/picorv32a/runs/antenna_fix/tmp/17-picorv32.sdc'…
+area_report
+
+===========================================================================
+report_design_area
+============================================================================
+Design area 129014 u^2 54% utilization.
+area_report_end
+</pre>
+            </details><details class="step-item">
+                <summary>Step 18 &mdash; rsz_timing_sta</summary>
+                <pre class="log-box-sm">===========================================================================
+report_wns
+============================================================================
+wns 0.00
+
+===========================================================================
+report_worst_slack -max (Setup)
+============================================================================
+worst slack 14.04
+
+===========================================================================
+report_worst_slack -min (Hold)
+============================================================================
+worst slack 0.20
+summary_report_end
+area_report
+
+===========================================================================
+report_design_area
+============================================================================
+Design area 129014 u^2 54% utilization.
+area_report_end
+[WARNING] Did not save OpenROAD database!
+Writing SDF to '/openlane/designs/picorv32a/runs/antenna_fix/results/signoff/picorv32.sdf'…
+Writing timing model to '/openlane/designs/picorv32a/runs/antenna_fix/results/signoff/picorv32.lib'…
+</pre>
+            </details><details class="step-item">
+                <summary>Step 19 &mdash; io_diodes</summary>
+                <pre class="log-box-sm">OpenROAD 41a51eaf4ca2171c92ff38afb91eb37bbd3f36da 
+This program is licensed under the BSD-3 license. See the LICENSE file for details.
+Components of this program may be licensed under more restrictive licenses which must be honored.
+Design name: picorv32
+Inserted 35 diodes.
+</pre>
+            </details><details class="step-item">
+                <summary>Step 20 &mdash; io_diode_legalization</summary>
+                <pre class="log-box-sm">Using 1e+03 for resistance...
+Using 1e-09 for time...
+Using 1e+00 for voltage...
+Using 1e-03 for current...
+Using 1e-09 for power...
+Using 1e-06 for distance...
+Reading design constraints file at '/openlane/designs/picorv32a/runs/antenna_fix/tmp/17-picorv32.sdc'…
+Placement Analysis
+---------------------------------
+total displacement        102.2 u
+average displacement        0.0 u
+max displacement           14.2 u
+original HPWL          558158.6 u
+legalized HPWL         569865.2 u
+delta HPWL                    2 %
+
+[INFO DPL-0020] Mirrored 5596 instances
+[INFO DPL-0021] HPWL before          569865.2 u
+[INFO DPL-0022] HPWL after           558231.9 u
+[INFO DPL-0023] HPWL delta               -2.0 %
+Setting global connections for newly added cells…
+Writing OpenROAD database to '/openlane/designs/picorv32a/runs/antenna_fix/tmp/routing/./19-io_diode_legalized.odb'…
+Writing netlist to '/openlane/designs/picorv32a/runs/antenna_fix/tmp/routing/./19-io_diode_legalized.nl.v'…
+Writing powered netlist to '/openlane/designs/picorv32a/runs/antenna_fix/tmp/routing/./19-io_diode_legalized.pnl.v'…
+Writing layout to '/openlane/designs/picorv32a/runs/antenna_fix/tmp/routing/./19-io_diode_legalized.def'…
+</pre>
+            </details><details class="step-item">
+                <summary>Step 21 &mdash; diodes</summary>
+                <pre class="log-box-sm">OpenROAD 41a51eaf4ca2171c92ff38afb91eb37bbd3f36da 
+This program is licensed under the BSD-3 license. See the LICENSE file for details.
+Components of this program may be licensed under more restrictive licenses which must be honored.
+Design name: picorv32
+Inserted 4757 diodes.
+</pre>
+            </details><details class="step-item">
+                <summary>Step 22 &mdash; diode_legalization</summary>
+                <pre class="log-box-sm">Using 1e+03 for resistance...
+Using 1e-09 for time...
+Using 1e+00 for voltage...
+Using 1e-03 for current...
+Using 1e-09 for power...
+Using 1e-06 for distance...
+Reading design constraints file at '/openlane/designs/picorv32a/runs/antenna_fix/tmp/17-picorv32.sdc'…
+Placement Analysis
+---------------------------------
+total displacement      20515.2 u
+average displacement        0.9 u
+max displacement           17.5 u
+original HPWL          558989.3 u
+legalized HPWL         575233.7 u
+delta HPWL                    3 %
+
+[INFO DPL-0020] Mirrored 7730 instances
+[INFO DPL-0021] HPWL before          575233.7 u
+[INFO DPL-0022] HPWL after           563714.2 u
+[INFO DPL-0023] HPWL delta               -2.0 %
+Setting global connections for newly added cells…
+Writing OpenROAD database to '/openlane/designs/picorv32a/runs/antenna_fix/tmp/routing/./21-diodes_legalized.odb'…
+Writing netlist to '/openlane/designs/picorv32a/runs/antenna_fix/tmp/routing/./21-diodes_legalized.nl.v'…
+Writing powered netlist to '/openlane/designs/picorv32a/runs/antenna_fix/tmp/routing/./21-diodes_legalized.pnl.v'…
+Writing layout to '/openlane/designs/picorv32a/runs/antenna_fix/tmp/routing/./21-diodes_legalized.def'…
+</pre>
+            </details><details class="step-item">
+                <summary>Step 23 &mdash; global</summary>
+                <pre class="log-box-sm">Total           165813         90011           54.28%             0 /  0 /  0
+
+[INFO GRT-0018] Total wirelength: 849369 um
+[INFO GRT-0014] Routed nets: 12740
+[INFO GRT-0006] Repairing antennas, iteration 1.
+[INFO GRT-0043] No OR_DEFAULT vias defined.
+[INFO GRT-0012] Found 7 antenna violations.
+[INFO GRT-0015] Inserted 7 diodes.
+[INFO GRT-0009] rerouting 9941 nets.
+[INFO GRT-0001] Minimum degree: 2
+[INFO GRT-0002] Maximum degree: 31
+[INFO GRT-0006] Repairing antennas, iteration 2.
+[INFO GRT-0043] No OR_DEFAULT vias defined.
+[INFO GRT-0012] Found 1 antenna violations.
+[INFO GRT-0015] Inserted 1 diodes.
+[INFO GRT-0009] rerouting 5 nets.
+[INFO GRT-0001] Minimum degree: 5
+[INFO GRT-0002] Maximum degree: 5
+[INFO GRT-0006] Repairing antennas, iteration 3.
+[INFO GRT-0043] No OR_DEFAULT vias defined.
+[INFO GRT-0012] Found 0 antenna violations.
+Setting global connections for newly added cells…
+Writing OpenROAD database to '/openlane/designs/picorv32a/runs/antenna_fix/tmp/routing/23-global.odb'…
+Writing layout to '/openlane/designs/picorv32a/runs/antenna_fix/tmp/routing/23-global.def'…
+Writing routing guides to '/openlane/designs/picorv32a/runs/antenna_fix/tmp/routing/23-global.guide'…
+</pre>
+            </details><details class="step-item">
+                <summary>Step 23 &mdash; global_write_netlist</summary>
+                <pre class="log-box-sm">OpenROAD 41a51eaf4ca2171c92ff38afb91eb37bbd3f36da 
+This program is licensed under the BSD-3 license. See the LICENSE file for details.
+Components of this program may be licensed under more restrictive licenses which must be honored.
+[INFO]: Reading ODB at '/openlane/designs/picorv32a/runs/antenna_fix/tmp/routing/23-global.odb'…
+define_corners Typical
+read_liberty -corner Typical /home/asifr/.ciel/sky130A/libs.ref/sky130_fd_sc_hd/lib/sky130_fd_sc_hd__tt_025C_1v80.lib
+Using 1e-12 for capacitance...
+Using 1e+03 for resistance...
+Using 1e-09 for time...
+Using 1e+00 for voltage...
+Using 1e-03 for current...
+Using 1e-09 for power...
+Using 1e-06 for distance...
+Reading design constraints file at '/openlane/designs/picorv32a/runs/antenna_fix/tmp/17-picorv32.sdc'…
+Setting global connections for newly added cells…
+[WARNING] Did not save OpenROAD database!
+Writing netlist to '/openlane/designs/picorv32a/runs/antenna_fix/tmp/routing/global.nl.v'…
+Writing powered netlist to '/openlane/designs/picorv32a/runs/antenna_fix/tmp/routing/global.pnl.v'…
+</pre>
+            </details><details class="step-item">
+                <summary>Step 25 &mdash; grt_sta</summary>
+                <pre class="log-box-sm">tns 0.00
+
+===========================================================================
+report_wns
+============================================================================
+wns 0.00
+
+===========================================================================
+report_worst_slack -max (Setup)
+============================================================================
+worst slack 14.04
+
+===========================================================================
+report_worst_slack -min (Hold)
+============================================================================
+worst slack 0.20
+summary_report_end
+area_report
+
+===========================================================================
+report_design_area
+============================================================================
+Design area 142699 u^2 60% utilization.
+area_report_end
+[WARNING] Did not save OpenROAD database!
+</pre>
+            </details><details class="step-item">
+                <summary>Step 26 &mdash; fill</summary>
+                <pre class="log-box-sm">OpenROAD 41a51eaf4ca2171c92ff38afb91eb37bbd3f36da 
+This program is licensed under the BSD-3 license. See the LICENSE file for details.
+Components of this program may be licensed under more restrictive licenses which must be honored.
+[INFO]: Reading ODB at '/openlane/designs/picorv32a/runs/antenna_fix/tmp/routing/23-global.odb'…
+define_corners Typical
+read_liberty -corner Typical /home/asifr/.ciel/sky130A/libs.ref/sky130_fd_sc_hd/lib/sky130_fd_sc_hd__tt_025C_1v80.lib
+Using 1e-12 for capacitance...
+Using 1e+03 for resistance...
+Using 1e-09 for time...
+Using 1e+00 for voltage...
+Using 1e-03 for current...
+Using 1e-09 for power...
+Using 1e-06 for distance...
+Reading design constraints file at '/openlane/designs/picorv32a/runs/antenna_fix/tmp/17-picorv32.sdc'…
+[INFO DPL-0001] Placed 17252 filler instances.
+Setting global connections for newly added cells…
+Writing OpenROAD database to '/openlane/designs/picorv32a/runs/antenna_fix/tmp/routing/26-fill.odb'…
+Writing netlist to '/openlane/designs/picorv32a/runs/antenna_fix/tmp/routing/26-fill.nl.v'…
+Writing powered netlist to '/openlane/designs/picorv32a/runs/antenna_fix/tmp/routing/26-fill.pnl.v'…
+Writing layout to '/openlane/designs/picorv32a/runs/antenna_fix/tmp/routing/26-fill.def'…
+</pre>
+            </details><details class="step-item">
+                <summary>Step 27 &mdash; detailed</summary>
+                <pre class="log-box-sm">Total wire length on LAYER met3 = 141866 um.
+Total wire length on LAYER met4 = 61361 um.
+Total wire length on LAYER met5 = 10594 um.
+Total number of vias = 104068.
+Up-via summary (total 104068):.
+
+-------------------------
+ FR_MASTERSLICE         0
+            li1     44514
+           met1     50439
+           met2      7175
+           met3      1776
+           met4       164
+-------------------------
+                   104068
+
+
+[INFO DRT-0267] cpu time = 00:40:58, elapsed time = 00:22:13, memory = 835.09 (MB), peak = 1331.86 (MB)
+
+[INFO DRT-0180] Post processing.
+Setting global connections for newly added cells…
+Writing OpenROAD database to '/openlane/designs/picorv32a/runs/antenna_fix/results/routing/picorv32.odb'…
+Writing netlist to '/openlane/designs/picorv32a/runs/antenna_fix/results/routing/picorv32.nl.v'…
+Writing powered netlist to '/openlane/designs/picorv32a/runs/antenna_fix/results/routing/picorv32.pnl.v'…
+Writing layout to '/openlane/designs/picorv32a/runs/antenna_fix/results/routing/picorv32.def'…
+</pre>
+            </details><details class="step-item">
+                <summary>Step 28 &mdash; wire_lengths</summary>
+                <pre class="log-box-sm">OpenROAD 41a51eaf4ca2171c92ff38afb91eb37bbd3f36da 
+This program is licensed under the BSD-3 license. See the LICENSE file for details.
+Components of this program may be licensed under more restrictive licenses which must be honored.
+No wire length surpasses the threshold (Infinity μm).
+</pre>
+            </details></div>
+        </details><details class="stage-block">
+            <summary>Signoff &nbsp;<span class="step-count">(22 steps)</span></summary>
+            <div class="step-list"><details class="step-item">
+                <summary>Step 29 &mdash; parasitics_extraction.min</summary>
+                <pre class="log-box-sm">Using 1e+00 for voltage...
+Using 1e-03 for current...
+Using 1e-09 for power...
+Using 1e-06 for distance...
+Using RCX ruleset '/home/asifr/.ciel/sky130A/libs.tech/openlane/rules.openrcx.sky130A.min.calibre'...
+[INFO RCX-0431] Defined process_corner X with ext_model_index 0
+[INFO RCX-0029] Defined extraction corner X
+[INFO RCX-0008] extracting parasitics of picorv32 ...
+[INFO RCX-0435] Reading extraction model file /home/asifr/.ciel/sky130A/libs.tech/openlane/rules.openrcx.sky130A.min.calibre ...
+[INFO RCX-0436] RC segment generation picorv32 (max_merge_res 50.0) ...
+[INFO RCX-0040] Final 53711 rc segments
+[INFO RCX-0439] Coupling Cap extraction picorv32 ...
+[INFO RCX-0440] Coupling threshhold is 0.1000 fF, coupling capacitance less than 0.1000 fF will be grounded.
+[INFO RCX-0043] 123026 wires to be extracted
+[INFO RCX-0442] 50% completion -- 62640 wires have been extracted
+[INFO RCX-0442] 100% completion -- 123026 wires have been extracted
+[INFO RCX-0045] Extract 12807 nets, 66451 rsegs, 66451 caps, 148978 ccs
+[INFO RCX-0015] Finished extracting picorv32.
+Writing result to /openlane/designs/picorv32a/runs/antenna_fix/results/routing/mca/process_corner_min/picorv32.spef...
+Setting global connections for newly added cells…
+[WARNING] Did not save OpenROAD database!
+Writing extracted parasitics to '/openlane/designs/picorv32a/runs/antenna_fix/results/routing/mca/process_corner_min/picorv32.spef'…
+[INFO RCX-0016] Writing SPEF ...
+[INFO RCX-0443] 12807 nets finished
+[INFO RCX-0017] Finished writing SPEF ...
+</pre>
+            </details><details class="step-item">
+                <summary>Step 30 &mdash; rcx_mcsta.min</summary>
+                <pre class="log-box-sm">
+===========================================================================
+report_wns
+============================================================================
+wns 0.00
+
+===========================================================================
+report_worst_slack -max (Setup)
+============================================================================
+worst slack 9.22
+
+===========================================================================
+report_worst_slack -min (Hold)
+============================================================================
+worst slack 0.12
+summary_report_end
+[WARNING] Did not save OpenROAD database!
+Writing SDF files for all corners…
+Writing SDF for the Fastest corner to /openlane/designs/picorv32a/runs/antenna_fix/results/routing/mca/process_corner_min/picorv32.Fastest.sdf…
+Writing SDF for the Slowest corner to /openlane/designs/picorv32a/runs/antenna_fix/results/routing/mca/process_corner_min/picorv32.Slowest.sdf…
+Writing SDF for the Typical corner to /openlane/designs/picorv32a/runs/antenna_fix/results/routing/mca/process_corner_min/picorv32.Typical.sdf…
+Writing timing models for all corners…
+Writing timing models for the Fastest corner to /openlane/designs/picorv32a/runs/antenna_fix/results/routing/mca/process_corner_min/picorv32.Fastest.lib…
+Writing timing models for the Slowest corner to /openlane/designs/picorv32a/runs/antenna_fix/results/routing/mca/process_corner_min/picorv32.Slowest.lib…
+Writing timing models for the Typical corner to /openlane/designs/picorv32a/runs/antenna_fix/results/routing/mca/process_corner_min/picorv32.Typical.lib…
+</pre>
+            </details><details class="step-item">
+                <summary>Step 31 &mdash; parasitics_extraction.max</summary>
+                <pre class="log-box-sm">Using 1e+00 for voltage...
+Using 1e-03 for current...
+Using 1e-09 for power...
+Using 1e-06 for distance...
+Using RCX ruleset '/home/asifr/.ciel/sky130A/libs.tech/openlane/rules.openrcx.sky130A.max.calibre'...
+[INFO RCX-0431] Defined process_corner X with ext_model_index 0
+[INFO RCX-0029] Defined extraction corner X
+[INFO RCX-0008] extracting parasitics of picorv32 ...
+[INFO RCX-0435] Reading extraction model file /home/asifr/.ciel/sky130A/libs.tech/openlane/rules.openrcx.sky130A.max.calibre ...
+[INFO RCX-0436] RC segment generation picorv32 (max_merge_res 50.0) ...
+[INFO RCX-0040] Final 73693 rc segments
+[INFO RCX-0439] Coupling Cap extraction picorv32 ...
+[INFO RCX-0440] Coupling threshhold is 0.1000 fF, coupling capacitance less than 0.1000 fF will be grounded.
+[INFO RCX-0043] 123026 wires to be extracted
+[INFO RCX-0442] 50% completion -- 62640 wires have been extracted
+[INFO RCX-0442] 100% completion -- 123026 wires have been extracted
+[INFO RCX-0045] Extract 12807 nets, 86433 rsegs, 86433 caps, 153482 ccs
+[INFO RCX-0015] Finished extracting picorv32.
+Writing result to /openlane/designs/picorv32a/runs/antenna_fix/results/routing/mca/process_corner_max/picorv32.spef...
+Setting global connections for newly added cells…
+[WARNING] Did not save OpenROAD database!
+Writing extracted parasitics to '/openlane/designs/picorv32a/runs/antenna_fix/results/routing/mca/process_corner_max/picorv32.spef'…
+[INFO RCX-0016] Writing SPEF ...
+[INFO RCX-0443] 12807 nets finished
+[INFO RCX-0017] Finished writing SPEF ...
+</pre>
+            </details><details class="step-item">
+                <summary>Step 32 &mdash; rcx_mcsta.max</summary>
+                <pre class="log-box-sm">
+===========================================================================
+report_wns
+============================================================================
+wns 0.00
+
+===========================================================================
+report_worst_slack -max (Setup)
+============================================================================
+worst slack 8.57
+
+===========================================================================
+report_worst_slack -min (Hold)
+============================================================================
+worst slack 0.12
+summary_report_end
+[WARNING] Did not save OpenROAD database!
+Writing SDF files for all corners…
+Writing SDF for the Fastest corner to /openlane/designs/picorv32a/runs/antenna_fix/results/routing/mca/process_corner_max/picorv32.Fastest.sdf…
+Writing SDF for the Slowest corner to /openlane/designs/picorv32a/runs/antenna_fix/results/routing/mca/process_corner_max/picorv32.Slowest.sdf…
+Writing SDF for the Typical corner to /openlane/designs/picorv32a/runs/antenna_fix/results/routing/mca/process_corner_max/picorv32.Typical.sdf…
+Writing timing models for all corners…
+Writing timing models for the Fastest corner to /openlane/designs/picorv32a/runs/antenna_fix/results/routing/mca/process_corner_max/picorv32.Fastest.lib…
+Writing timing models for the Slowest corner to /openlane/designs/picorv32a/runs/antenna_fix/results/routing/mca/process_corner_max/picorv32.Slowest.lib…
+Writing timing models for the Typical corner to /openlane/designs/picorv32a/runs/antenna_fix/results/routing/mca/process_corner_max/picorv32.Typical.lib…
+</pre>
+            </details><details class="step-item">
+                <summary>Step 33 &mdash; parasitics_extraction.nom</summary>
+                <pre class="log-box-sm">Using 1e+00 for voltage...
+Using 1e-03 for current...
+Using 1e-09 for power...
+Using 1e-06 for distance...
+Using RCX ruleset '/home/asifr/.ciel/sky130A/libs.tech/openlane/rules.openrcx.sky130A.nom.calibre'...
+[INFO RCX-0431] Defined process_corner X with ext_model_index 0
+[INFO RCX-0029] Defined extraction corner X
+[INFO RCX-0008] extracting parasitics of picorv32 ...
+[INFO RCX-0435] Reading extraction model file /home/asifr/.ciel/sky130A/libs.tech/openlane/rules.openrcx.sky130A.nom.calibre ...
+[INFO RCX-0436] RC segment generation picorv32 (max_merge_res 50.0) ...
+[INFO RCX-0040] Final 56122 rc segments
+[INFO RCX-0439] Coupling Cap extraction picorv32 ...
+[INFO RCX-0440] Coupling threshhold is 0.1000 fF, coupling capacitance less than 0.1000 fF will be grounded.
+[INFO RCX-0043] 123026 wires to be extracted
+[INFO RCX-0442] 50% completion -- 62640 wires have been extracted
+[INFO RCX-0442] 100% completion -- 123026 wires have been extracted
+[INFO RCX-0045] Extract 12807 nets, 68862 rsegs, 68862 caps, 150507 ccs
+[INFO RCX-0015] Finished extracting picorv32.
+Writing result to /openlane/designs/picorv32a/runs/antenna_fix/results/routing/mca/process_corner_nom/picorv32.spef...
+Setting global connections for newly added cells…
+[WARNING] Did not save OpenROAD database!
+Writing extracted parasitics to '/openlane/designs/picorv32a/runs/antenna_fix/results/routing/mca/process_corner_nom/picorv32.spef'…
+[INFO RCX-0016] Writing SPEF ...
+[INFO RCX-0443] 12807 nets finished
+[INFO RCX-0017] Finished writing SPEF ...
+</pre>
+            </details><details class="step-item">
+                <summary>Step 34 &mdash; rcx_mcsta.nom</summary>
+                <pre class="log-box-sm">
+===========================================================================
+report_wns
+============================================================================
+wns 0.00
+
+===========================================================================
+report_worst_slack -max (Setup)
+============================================================================
+worst slack 8.88
+
+===========================================================================
+report_worst_slack -min (Hold)
+============================================================================
+worst slack 0.12
+summary_report_end
+[WARNING] Did not save OpenROAD database!
+Writing SDF files for all corners…
+Writing SDF for the Fastest corner to /openlane/designs/picorv32a/runs/antenna_fix/results/routing/mca/process_corner_nom/picorv32.Fastest.sdf…
+Writing SDF for the Slowest corner to /openlane/designs/picorv32a/runs/antenna_fix/results/routing/mca/process_corner_nom/picorv32.Slowest.sdf…
+Writing SDF for the Typical corner to /openlane/designs/picorv32a/runs/antenna_fix/results/routing/mca/process_corner_nom/picorv32.Typical.sdf…
+Writing timing models for all corners…
+Writing timing models for the Fastest corner to /openlane/designs/picorv32a/runs/antenna_fix/results/routing/mca/process_corner_nom/picorv32.Fastest.lib…
+Writing timing models for the Slowest corner to /openlane/designs/picorv32a/runs/antenna_fix/results/routing/mca/process_corner_nom/picorv32.Slowest.lib…
+Writing timing models for the Typical corner to /openlane/designs/picorv32a/runs/antenna_fix/results/routing/mca/process_corner_nom/picorv32.Typical.lib…
+</pre>
+            </details><details class="step-item">
+                <summary>Step 35 &mdash; rcx_sta</summary>
+                <pre class="log-box-sm">summary_report
+
+===========================================================================
+report_tns
+============================================================================
+tns 0.00
+
+===========================================================================
+report_wns
+============================================================================
+wns 0.00
+
+===========================================================================
+report_worst_slack -max (Setup)
+============================================================================
+worst slack 13.19
+
+===========================================================================
+report_worst_slack -min (Hold)
+============================================================================
+worst slack 0.33
+summary_report_end
+[WARNING] Did not save OpenROAD database!
+Writing SDF to '/openlane/designs/picorv32a/runs/antenna_fix/results/routing/mca/process_corner_nom/picorv32.sdf'…
+Writing timing model to '/openlane/designs/picorv32a/runs/antenna_fix/results/routing/mca/process_corner_nom/picorv32.lib'…
+</pre>
+            </details><details class="step-item">
+                <summary>Step 36 &mdash; irdrop</summary>
+                <pre class="log-box-sm">[INFO PSM-0064] Number of voltage sources = 2.
+[INFO PSM-0040] All PDN stripes on net VPWR are connected.
+########## IR report #################
+Worstcase voltage: 1.78e+00 V
+Average IR drop  : 1.01e-02 V
+Worstcase IR drop: 1.62e-02 V
+######################################
+[INFO PSM-0002] Output voltage file is specified as: /openlane/designs/picorv32a/runs/antenna_fix/reports/signoff/36-irdrop-VGND.rpt.
+[WARNING PSM-0016] Voltage pad location (VSRC) file not specified, defaulting pad location to checkerboard pattern on core area.
+[WARNING PSM-0017] X direction bump pitch is not specified, defaulting to 140um.
+[WARNING PSM-0018] Y direction bump pitch is not specified, defaulting to 140um.
+[WARNING PSM-0019] Voltage on net VGND is not explicitly set.
+[WARNING PSM-0021] Using voltage 0.000V for ground network.
+[WARNING PSM-0065] VSRC location not specified, using default checkerboard pattern with one VDD every size bumps in x-direction and one in two bumps in the y-direction
+[INFO PSM-0076] Setting metal node density to be standard cell height times 5.
+[WARNING PSM-0030] VSRC location at (109.320um, 114.320um) and size 10.000um, is not located on an existing power stripe node. Moving to closest node at (178.740um, 184.010um).
+[WARNING PSM-0030] VSRC location at (389.320um, 254.320um) and size 10.000um, is not located on an existing power stripe node. Moving to closest node at (332.340um, 184.010um).
+[INFO PSM-0031] Number of PDN nodes on net VGND = 6168.
+[INFO PSM-0064] Number of voltage sources = 2.
+[INFO PSM-0040] All PDN stripes on net VGND are connected.
+########## IR report #################
+Worstcase voltage: 1.60e-02 V
+Average IR drop  : 9.95e-03 V
+Worstcase IR drop: 1.60e-02 V
+######################################
+</pre>
+            </details><details class="step-item">
+                <summary>Step 37 &mdash; gds_ptrs</summary>
+                <pre class="log-box-sm">Reading "sky130_fd_sc_hd__a21o_4".
+Reading "sky130_fd_sc_hd__o2bb2a_1".
+Reading "sky130_fd_sc_hd__a21o_2".
+Reading "sky130_fd_sc_hd__o221ai_2".
+Reading "sky130_fd_sc_hd__a2111o_1".
+Reading "sky130_fd_sc_hd__o21bai_1".
+Reading "sky130_fd_sc_hd__a211o_2".
+Reading "sky130_fd_sc_hd__and4b_4".
+Reading "sky130_fd_sc_hd__nand4_1".
+Reading "sky130_fd_sc_hd__clkdlybuf4s25_1".
+Reading "sky130_fd_sc_hd__a41o_1".
+Reading "sky130_fd_sc_hd__or4_2".
+Reading "sky130_fd_sc_hd__a211oi_2".
+Reading "sky130_fd_sc_hd__o41a_1".
+Reading "sky130_fd_sc_hd__and4_2".
+Reading "sky130_fd_sc_hd__a21boi_1".
+Reading "picorv32".
+    5000 uses
+    10000 uses
+    15000 uses
+    20000 uses
+    25000 uses
+    30000 uses
+    35000 uses
+[INFO]: Wrote /openlane/designs/picorv32a/runs/antenna_fix/tmp/signoff/gds_ptrs.mag including GDS pointers.
+</pre>
+            </details><details class="step-item">
+                <summary>Step 37 &mdash; gdsii</summary>
+                <pre class="log-box-sm">   Generating output for cell sky130_fd_sc_hd__nor4b_1
+   Generating output for cell sky130_fd_sc_hd__or3b_4
+   Generating output for cell sky130_fd_sc_hd__a31oi_2
+   Generating output for cell sky130_fd_sc_hd__or4_4
+   Generating output for cell sky130_fd_sc_hd__nand2_4
+   Generating output for cell sky130_fd_sc_hd__a31oi_1
+   Generating output for cell sky130_fd_sc_hd__o22ai_4
+   Generating output for cell sky130_fd_sc_hd__a21o_4
+   Generating output for cell sky130_fd_sc_hd__o2bb2a_1
+   Generating output for cell sky130_fd_sc_hd__a21o_2
+   Generating output for cell sky130_fd_sc_hd__o221ai_2
+   Generating output for cell sky130_fd_sc_hd__a2111o_1
+   Generating output for cell sky130_fd_sc_hd__o21bai_1
+   Generating output for cell sky130_fd_sc_hd__a211o_2
+   Generating output for cell sky130_fd_sc_hd__and4b_4
+   Generating output for cell sky130_fd_sc_hd__nand4_1
+   Generating output for cell sky130_fd_sc_hd__clkdlybuf4s25_1
+   Generating output for cell sky130_fd_sc_hd__a41o_1
+   Generating output for cell sky130_fd_sc_hd__or4_2
+   Generating output for cell sky130_fd_sc_hd__a211oi_2
+   Generating output for cell sky130_fd_sc_hd__o41a_1
+   Generating output for cell sky130_fd_sc_hd__and4_2
+   Generating output for cell sky130_fd_sc_hd__a21boi_1
+   Generating output for cell picorv32
+[INFO]: GDS Write Complete
+</pre>
+            </details><details class="step-item">
+                <summary>Step 37 &mdash; lef</summary>
+                <pre class="log-box-sm">Moving label "net378" from metal1 to via1 in cell picorv32.
+Moving label "net390" from metal1 to viali in cell picorv32.
+Moving label "net48" from metal2 to via2 in cell picorv32.
+Moving label "net69" from metal2 to via2 in cell picorv32.
+Moving label "net7" from metal2 to via2 in cell picorv32.
+Moving label "net70" from metal2 to via2 in cell picorv32.
+Moving label "net78" from metal2 to via2 in cell picorv32.
+Moving label "net81" from metal2 to via2 in cell picorv32.
+Moving label "pcpi_rs1[17]" from metal2 to via2 in cell picorv32.
+Moving label "pcpi_rs1[18]" from metal2 to via2 in cell picorv32.
+Moving label "pcpi_rs1[1]" from metal2 to via2 in cell picorv32.
+Moving label "pcpi_rs1[20]" from metal2 to via2 in cell picorv32.
+Moving label "pcpi_rs1[26]" from metal2 to via2 in cell picorv32.
+Moving label "pcpi_rs2[13]" from metal2 to via2 in cell picorv32.
+Moving label "pcpi_rs2[19]" from metal2 to via2 in cell picorv32.
+Moving label "pcpi_rs2[27]" from metal2 to via2 in cell picorv32.
+Moving label "pcpi_rs2[3]" from metal2 to via2 in cell picorv32.
+Moving label "reg_out\[22\]" from metal1 to via1 in cell picorv32.
+Moving label "reg_pc\[12\]" from metal2 to via1 in cell picorv32.
+[INFO]: Writing abstract LEF
+Generating LEF output /openlane/designs/picorv32a/runs/antenna_fix/results/signoff/picorv32.lef for cell picorv32:
+Diagnostic:  Write LEF header for cell picorv32
+Diagnostic:  Writing LEF output for cell picorv32
+Diagnostic:  Scale value is 0.005000
+[INFO]: LEF Write Complete
+</pre>
+            </details><details class="step-item">
+                <summary>Step 37 &mdash; maglef</summary>
+                <pre class="log-box-sm">
+Magic 8.3 revision 413 - Compiled on Wed Jul 12 10:04:40 UTC 2023.
+Starting magic under Tcl interpreter
+Using the terminal as the console.
+Using NULL graphics device.
+Processing system .magicrc file
+Sourcing design .magicrc for technology sky130A ...
+2 Magic internal units = 1 Lambda
+Input style sky130(): scaleFactor=2, multiplier=2
+The following types are not handled by extraction and will be treated as non-electrical types:
+    ubm 
+Scaled tech values by 2 / 1 to match internal grid scaling
+Loading sky130A Device Generator Menu ...
+Using technology "sky130A", version 1.0.493-0-g0fe599b
+Reading LEF data from file /openlane/designs/picorv32a/runs/antenna_fix/results/signoff/picorv32.lef.
+This action cannot be undone.
+LEF read: Processed 4083 lines.
+[INFO]: DONE GENERATING MAGLEF VIEW
+</pre>
+            </details><details class="step-item">
+                <summary>Step 38 &mdash; gdsii-klayout</summary>
+                <pre class="log-box-sm">Warning: No mapping for layer 'pwell', purpose 'LEFOBS' - layer is ignored
+[INFO] Clearing cells…
+[INFO] Merging GDS files…
+	/home/asifr/.ciel/sky130A/libs.ref/sky130_fd_sc_hd/gds/sky130_fd_sc_hd.gds
+[INFO] Copying top level cell 'picorv32'…
+[INFO] Checking for missing GDS…
+[INFO] All LEF cells have matching GDS cells.
+[INFO] Writing out GDS '/openlane/designs/picorv32a/runs/antenna_fix/results/signoff/picorv32.klayout.gds'…
+[INFO] Done.
+</pre>
+            </details><details class="step-item">
+                <summary>Step 39 &mdash; xor</summary>
+                <pre class="log-box-sm">"^" in: xor.drc:94
+    Polygons (raw): 0 (flat)  0 (hierarchical)
+    Elapsed: 0.720s  Memory: 504.00M
+XOR differences: 0
+"output" in: xor.drc:69
+    Polygons (raw): 0 (flat)  0 (hierarchical)
+    Elapsed: 0.000s  Memory: 504.00M
+--- Running XOR for layer 95/20 ---
+"input" in: xor.drc:94
+    Polygons (raw): 22015 (flat)  145 (hierarchical)
+    Elapsed: 0.000s  Memory: 504.00M
+"input" in: xor.drc:94
+    Polygons (raw): 22015 (flat)  145 (hierarchical)
+    Elapsed: 0.000s  Memory: 504.00M
+"^" in: xor.drc:94
+    Polygons (raw): 0 (flat)  0 (hierarchical)
+    Elapsed: 0.440s  Memory: 504.00M
+XOR differences: 0
+"output" in: xor.drc:69
+    Polygons (raw): 0 (flat)  0 (hierarchical)
+    Elapsed: 0.000s  Memory: 504.00M
+---
+Total XOR differences: 0
+Writing report database: /openlane/designs/picorv32a/runs/antenna_fix/reports/signoff/39-xor.xml ..
+Total elapsed: 30.560s  Memory: 504.00M
+</pre>
+            </details><details class="step-item">
+                <summary>Step 40 &mdash; spice</summary>
+                <pre class="log-box-sm">Extracting sky130_fd_sc_hd__nor4b_1 into sky130_fd_sc_hd__nor4b_1.ext:
+Extracting sky130_fd_sc_hd__or3b_4 into sky130_fd_sc_hd__or3b_4.ext:
+Extracting sky130_fd_sc_hd__a31oi_2 into sky130_fd_sc_hd__a31oi_2.ext:
+Extracting sky130_fd_sc_hd__or4_4 into sky130_fd_sc_hd__or4_4.ext:
+Extracting sky130_fd_sc_hd__nand2_4 into sky130_fd_sc_hd__nand2_4.ext:
+Extracting sky130_fd_sc_hd__a31oi_1 into sky130_fd_sc_hd__a31oi_1.ext:
+Extracting sky130_fd_sc_hd__o22ai_4 into sky130_fd_sc_hd__o22ai_4.ext:
+Extracting sky130_fd_sc_hd__a21o_4 into sky130_fd_sc_hd__a21o_4.ext:
+Extracting sky130_fd_sc_hd__o2bb2a_1 into sky130_fd_sc_hd__o2bb2a_1.ext:
+Extracting sky130_fd_sc_hd__a21o_2 into sky130_fd_sc_hd__a21o_2.ext:
+Extracting sky130_fd_sc_hd__o221ai_2 into sky130_fd_sc_hd__o221ai_2.ext:
+Extracting sky130_fd_sc_hd__a2111o_1 into sky130_fd_sc_hd__a2111o_1.ext:
+Extracting sky130_fd_sc_hd__o21bai_1 into sky130_fd_sc_hd__o21bai_1.ext:
+Extracting sky130_fd_sc_hd__a211o_2 into sky130_fd_sc_hd__a211o_2.ext:
+Extracting sky130_fd_sc_hd__and4b_4 into sky130_fd_sc_hd__and4b_4.ext:
+Extracting sky130_fd_sc_hd__nand4_1 into sky130_fd_sc_hd__nand4_1.ext:
+Extracting sky130_fd_sc_hd__clkdlybuf4s25_1 into sky130_fd_sc_hd__clkdlybuf4s25_1.ext:
+Extracting sky130_fd_sc_hd__a41o_1 into sky130_fd_sc_hd__a41o_1.ext:
+Extracting sky130_fd_sc_hd__or4_2 into sky130_fd_sc_hd__or4_2.ext:
+Extracting sky130_fd_sc_hd__a211oi_2 into sky130_fd_sc_hd__a211oi_2.ext:
+Extracting sky130_fd_sc_hd__o41a_1 into sky130_fd_sc_hd__o41a_1.ext:
+Extracting sky130_fd_sc_hd__and4_2 into sky130_fd_sc_hd__and4_2.ext:
+Extracting sky130_fd_sc_hd__a21boi_1 into sky130_fd_sc_hd__a21boi_1.ext:
+Extracting picorv32 into picorv32.ext:
+exttospice finished.
+</pre>
+            </details><details class="step-item">
+                <summary>Step 41 &mdash; write_powered_def</summary>
+                <pre class="log-box-sm">OpenROAD 41a51eaf4ca2171c92ff38afb91eb37bbd3f36da 
+This program is licensed under the BSD-3 license. See the LICENSE file for details.
+Components of this program may be licensed under more restrictive licenses which must be honored.
+[INFO ODB-0222] Reading LEF file: /openlane/designs/picorv32a/runs/antenna_fix/tmp/merged.nom.lef
+[INFO ODB-0223]     Created 14 technology layers
+[INFO ODB-0224]     Created 25 technology vias
+[INFO ODB-0225]     Created 441 library cells
+[INFO ODB-0226] Finished LEF file:  /openlane/designs/picorv32a/runs/antenna_fix/tmp/merged.nom.lef
+[INFO ODB-0127] Reading DEF file: /openlane/designs/picorv32a/runs/antenna_fix/results/routing/picorv32.def
+[INFO ODB-0128] Design: picorv32
+[INFO ODB-0130]     Created 411 pins.
+[INFO ODB-0131]     Created 39132 components and 194508 component-terminals.
+[INFO ODB-0132]     Created 2 special nets and 149832 connections.
+[INFO ODB-0133]     Created 12807 nets and 44570 connections.
+[INFO ODB-0134] Finished DEF file: /openlane/designs/picorv32a/runs/antenna_fix/results/routing/picorv32.def
+Top-level design name: picorv32
+Found default power net 'VPWR'
+Found default ground net 'VGND'
+Found 1 power ports.
+Found 1 ground ports.
+Modified power connections of 39132/39132 cells.
+</pre>
+            </details><details class="step-item">
+                <summary>Step 41 &mdash; write_powered_verilog</summary>
+                <pre class="log-box-sm">[INFO ODB-0222] Reading LEF file: /openlane/designs/picorv32a/runs/antenna_fix/tmp/merged.nom.lef
+[INFO ODB-0223]     Created 14 technology layers
+[INFO ODB-0224]     Created 25 technology vias
+[INFO ODB-0225]     Created 441 library cells
+[INFO ODB-0226] Finished LEF file:  /openlane/designs/picorv32a/runs/antenna_fix/tmp/merged.nom.lef
+[INFO ODB-0127] Reading DEF file: /openlane/designs/picorv32a/runs/antenna_fix/tmp/signoff/40-picorv32.p.def
+[INFO ODB-0128] Design: picorv32
+[INFO ODB-0130]     Created 411 pins.
+[INFO ODB-0131]     Created 39132 components and 194508 component-terminals.
+[INFO ODB-0132]     Created 2 special nets and 149832 connections.
+[INFO ODB-0133]     Created 12807 nets and 44570 connections.
+[INFO ODB-0134] Finished DEF file: /openlane/designs/picorv32a/runs/antenna_fix/tmp/signoff/40-picorv32.p.def
+define_corners Typical
+read_liberty -corner Typical /home/asifr/.ciel/sky130A/libs.ref/sky130_fd_sc_hd/lib/sky130_fd_sc_hd__tt_025C_1v80.lib
+Using 1e-12 for capacitance...
+Using 1e+03 for resistance...
+Using 1e-09 for time...
+Using 1e+00 for voltage...
+Using 1e-03 for current...
+Using 1e-09 for power...
+Using 1e-06 for distance...
+Reading design constraints file at '/openlane/designs/picorv32a/runs/antenna_fix/tmp/17-picorv32.sdc'…
+[WARNING] Did not save OpenROAD database!
+Writing netlist to '/openlane/designs/picorv32a/runs/antenna_fix/tmp/signoff/40-picorv32.nl.v'…
+Writing powered netlist to '/openlane/designs/picorv32a/runs/antenna_fix/tmp/signoff/40-picorv32.pnl.v'…
+</pre>
+            </details><details class="step-item">
+                <summary>Step 43 &mdash; lvs.lef</summary>
+                <pre class="log-box-sm">  Class: sky130_fd_sc_hd__a21oi_1 instances:  93
+  Class: sky130_fd_sc_hd__a21oi_2 instances:  19
+  Class: sky130_fd_sc_hd__a311o_1 instances:  15
+  Class: sky130_fd_sc_hd__a311o_2 instances:  11
+  Class: sky130_fd_sc_hd__a311o_4 instances:  10
+  Class: sky130_fd_sc_hd__fill_1 instances:   1
+  Class: sky130_fd_sc_hd__fill_2 instances:   1
+  Class: sky130_fd_sc_hd__o211ai_2 instances:   1
+  Class: sky130_fd_sc_hd__or2b_1 instances:  21
+  Class: sky130_fd_sc_hd__or2b_2 instances:   1
+  Class: sky130_fd_sc_hd__and4bb_1 instances:   4
+  Class: sky130_fd_sc_hd__nor2_1 instances: 205
+  Class: sky130_fd_sc_hd__nor2_2 instances:   6
+  Class: sky130_fd_sc_hd__nor2_4 instances:   3
+Circuit contains 12848 nets, and 67 disconnected pins.
+
+Circuit 1 contains 14453 devices, Circuit 2 contains 14453 devices.
+Circuit 1 contains 12848 nets,    Circuit 2 contains 12848 nets.
+
+
+Final result: 
+Circuits match uniquely.
+.
+Logging to file "/openlane/designs/picorv32a/runs/antenna_fix/logs/signoff/43-picorv32.lef.lvs.log" disabled
+LVS Done.
+</pre>
+            </details><details class="step-item">
+                <summary>Step 43 &mdash; picorv32.lef.lvs</summary>
+                <pre class="log-box-sm">pcpi_rd[24]                                |pcpi_rd[24]                                
+pcpi_rd[25]                                |pcpi_rd[25]                                
+pcpi_rd[26]                                |pcpi_rd[26]                                
+pcpi_rd[27]                                |pcpi_rd[27]                                
+pcpi_rd[28]                                |pcpi_rd[28]                                
+pcpi_rd[29]                                |pcpi_rd[29]                                
+pcpi_rd[2]                                 |pcpi_rd[2]                                 
+pcpi_rd[30]                                |pcpi_rd[30]                                
+pcpi_rd[31]                                |pcpi_rd[31]                                
+pcpi_rd[3]                                 |pcpi_rd[3]                                 
+pcpi_rd[4]                                 |pcpi_rd[4]                                 
+pcpi_rd[5]                                 |pcpi_rd[5]                                 
+pcpi_rd[6]                                 |pcpi_rd[6]                                 
+pcpi_rd[7]                                 |pcpi_rd[7]                                 
+pcpi_rd[8]                                 |pcpi_rd[8]                                 
+pcpi_rd[9]                                 |pcpi_rd[9]                                 
+pcpi_ready                                 |pcpi_ready                                 
+pcpi_wait                                  |pcpi_wait                                  
+pcpi_wr                                    |pcpi_wr                                    
+---------------------------------------------------------------------------------------
+Cell pin lists are equivalent.
+Device classes picorv32 and picorv32 are equivalent.
+
+Final result: Circuits match uniquely.
+.
+</pre>
+            </details><details class="step-item">
+                <summary>Step 44 &mdash; drc</summary>
+                <pre class="log-box-sm">Reading "sky130_fd_sc_hd__clkdlybuf4s25_1".
+Reading "sky130_fd_sc_hd__a41o_1".
+Reading "sky130_fd_sc_hd__or4_2".
+Reading "sky130_fd_sc_hd__a211oi_2".
+Reading "sky130_fd_sc_hd__o41a_1".
+Reading "sky130_fd_sc_hd__and4_2".
+Reading "sky130_fd_sc_hd__a21boi_1".
+Reading "picorv32".
+    5000 uses
+    10000 uses
+    15000 uses
+    20000 uses
+    25000 uses
+    30000 uses
+    35000 uses
+[INFO]: Loading picorv32
+
+DRC style is now "drc(full)"
+Loading DRC CIF style.
+No errors found.
+[INFO]: COUNT: 0
+[INFO]: Should be divided by 3 or 4
+[INFO]: DRC Checking DONE (/openlane/designs/picorv32a/runs/antenna_fix/reports/signoff/drc.rpt)
+[INFO]: Saving mag view with DRC errors (/openlane/designs/picorv32a/runs/antenna_fix/results/signoff/picorv32.drc.mag)
+[INFO]: Saved
+</pre>
+            </details><details class="step-item">
+                <summary>Step 45 &mdash; arc</summary>
+                <pre class="log-box-sm">      Required ratio:    0.00 (Cumulative area) 
+      Cumulative area ratio:    0.00
+      Required ratio:    0.00 (Cumulative side area) 
+
+    Via: M2M3_PR
+      Partial area ratio:    0.07
+      Required ratio:    6.00 (Gate area) 
+      Cumulative area ratio:    0.66
+      Required ratio:    0.00 (Cumulative area) 
+
+    Via: M1M2_PR
+      Partial area ratio:    0.36
+      Required ratio:    6.00 (Gate area) 
+      Cumulative area ratio:    0.59
+      Required ratio:    0.00 (Cumulative area) 
+
+    Via: L1M1_PR
+      Partial area ratio:    0.23
+      Required ratio:    3.00 (Gate area) 
+      Cumulative area ratio:    0.23
+      Required ratio:    0.00 (Cumulative area) 
+
+
+[INFO ANT-0002] Found 2 net violations.
+[INFO ANT-0001] Found 2 pin violations.
+</pre>
+            </details><details class="step-item">
+                <summary>Step 46 &mdash; erc_screen</summary>
+                <pre class="log-box-sm">CVC_SHORT_ERROR_THRESHOLD = '0'
+CVC_BIAS_ERROR_THRESHOLD = '0'
+CVC_FORWARD_ERROR_THRESHOLD = '0'
+CVC_FLOATING_ERROR_THRESHOLD = '0'
+CVC_GATE_ERROR_THRESHOLD = '0'
+CVC_LEAK?_ERROR_THRESHOLD = '0'
+CVC_EXPECTED_ERROR_THRESHOLD = '0'
+CVC_OVERVOLTAGE_ERROR_THRESHOLD = '0'
+CVC_PARALLEL_CIRCUIT_PORT_LIMIT = '0'
+CVC_CELL_ERROR_LIMIT_FILE = ''
+CVC_CELL_CHECKSUM_FILE = ''
+CVC_LARGE_CIRCUIT_SIZE = '10000000'
+CVC_NET_CHECK_FILE = ''
+CVC_MODEL_CHECK_FILE = ''
+End of parameters
+
+CVC: Reading device model settings...
+CVC: Reading power settings...
+CVC: Parsing netlist /openlane/designs/picorv32a/runs/antenna_fix/tmp/signoff/picorv32.cdl
+
+Cdl fixed data size 700668
+Usage CDL: Time: 0  Memory: 78276  I/O: 5312  Swap: 0
+CVC: Counting and linking...
+Fatal error:could not find subcircuit: XFILLER_0_45_520(sky130_ef_sc_hd__decap_12) in picorv32
+
+</pre>
+            </details></div>
+        </details></div>
+        <h2>Recent Flow Steps</h2>
+        <table><tr><th>Step</th><th>Stage</th><th>Name</th></tr><tr><td>37</td><td>signoff</td><td>lef</td></tr><tr><td>37</td><td>signoff</td><td>maglef</td></tr><tr><td>38</td><td>signoff</td><td>gdsii-klayout</td></tr><tr><td>39</td><td>signoff</td><td>xor</td></tr><tr><td>40</td><td>signoff</td><td>spice</td></tr><tr><td>41</td><td>signoff</td><td>write_powered_def</td></tr><tr><td>41</td><td>signoff</td><td>write_powered_verilog</td></tr><tr><td>43</td><td>signoff</td><td>lvs.lef</td></tr><tr><td>43</td><td>signoff</td><td>picorv32.lef.lvs</td></tr><tr><td>44</td><td>signoff</td><td>drc</td></tr><tr><td>45</td><td>signoff</td><td>arc</td></tr><tr><td>46</td><td>signoff</td><td>erc_screen</td></tr></table>
+        <h2>Antenna Rule Checker Log (last 60 lines)</h2>
+        <pre class="log-box">Not found.</pre>
+        <h2>Max Fanout / STA Checks Report (last 60 lines)</h2>
+        <pre class="log-box">Not found.</pre>
     </div>
 
 <script>
